@@ -1,4 +1,4 @@
-package Entity;
+package com.example.BookStore.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "books")
 @Entity
-public class bookstore {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bookId")
