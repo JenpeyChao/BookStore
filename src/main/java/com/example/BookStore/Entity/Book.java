@@ -12,11 +12,13 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bookId")
-    public long bookId;
+    private long bookId;
 
     @Column(name = "name")
-    public String name;
+    private String name;
 
     @Column(name = "author")
-    public String author;
+    private String author;
+    @Column(name = "price")
+    private double price;
 }

@@ -10,4 +10,5 @@ public interface bookstoreServices {
     Book addBook(Book book);
     Book updateBook(Book book);
     String deleteBook(long bookId);
+
 }

@@ -2,6 +2,7 @@ package com.example.BookStore.Services;
 
 import com.example.BookStore.Entity.Book;
 import com.example.BookStore.Repository.bookstoreDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
@@ -11,8 +12,8 @@ import java.util.List;
 @Service
 public class bookstoreImpl implements bookstoreServices{
 
-    ApplicationContext context = new ClassPathXmlApplicationContext("Bean.xml");
-    public bookstoreDAO bookstore = (bookstoreDAO) context.getBean("bookstoreDAO");
+    @Autowired
+    public bookstoreDAO bookstore;
 
     @Override
     public List<Book> getAllBooks() {
@@ -38,5 +39,12 @@ public class bookstoreImpl implements bookstoreServices{
     public String deleteBook(long bookId) {
         this.bookstore.deleteById(bookId);
         return "Successfully deleted the book";
+    }
+
+    public List<Book> findBookByTitle(String name){
+        return this.bookstore.findBookByTitle(name);
+    }
+    public List<Book> findBookByAuthor(String name){
+        return this.bookstore.findBookByAuthor(name);
     }
 }
