@@ -30,13 +30,25 @@ public class bookstoreController {
     public List<Book> findBookByTitle(@RequestParam String name){
         return this.bookstoreImpl.findBookByTitle(name);
     }
+
     @GetMapping("/bookstore/author")
-    public List<Book> findBookByAuthor(@RequestParam String name){
-        return this.bookstoreImpl.findBookByAuthor(name);
+    public List<Book> findBookByAuthor(@RequestParam String author){
+        return this.bookstoreImpl.findBookByAuthor(author);
     }
+
     @GetMapping("/bookstore/{bookId}")
     public Book getBookById(@PathVariable long bookId) {
         return this.bookstoreImpl.getBookById(bookId);
+    }
+
+    @GetMapping("/bookstore/sortTitle")
+    public List<Book> sortByName(){
+        return this.bookstoreImpl.sortByName();
+    }
+
+    @GetMapping("/bookstore/sortAuthor")
+    public List<Book> sortByAuthor(){
+        return this.bookstoreImpl.sortByAuthor();
     }
 
     @PostMapping("/bookstore")

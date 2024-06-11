@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class bookstoreImpl implements bookstoreServices{
@@ -22,7 +23,15 @@ public class bookstoreImpl implements bookstoreServices{
 
     @Override
     public Book getBookById(long bookId) {
-        return this.bookstore.getReferenceById(bookId);
+        Optional<Book> check = this.bookstore.findById(bookId);
+        Book task = null;
+        if (check.isPresent()){
+            task = check.get();
+        }else{
+            throw new RuntimeException(bookId+ " Not Found");
+        }
+
+        return task;
     }
 
     @Override
@@ -44,7 +53,16 @@ public class bookstoreImpl implements bookstoreServices{
     public List<Book> findBookByTitle(String name){
         return this.bookstore.findBookByTitle(name);
     }
-    public List<Book> findBookByAuthor(String name){
-        return this.bookstore.findBookByAuthor(name);
+
+    public List<Book> findBookByAuthor(String author){
+        return this.bookstore.findBookByAuthor(author);
+    }
+
+    public List<Book> sortByName(){
+        return this.bookstore.sortByName();
+    }
+
+    public List<Book> sortByAuthor(){
+        return this.bookstore.sortByAuthor();
     }
 }

@@ -16,4 +16,10 @@ public interface bookstoreDAO extends JpaRepository<Book, Long> {
 
     @Query("SELECT b FROM Book b WHERE b.author = :author")
     List<Book> findBookByAuthor(@Param("author") String author);
+
+    @Query(value = "select * from books b order by b.name", nativeQuery = true)
+    List<Book> sortByName();
+
+    @Query(value = "select * from books b order by b.author", nativeQuery = true)
+    List<Book> sortByAuthor();
 }
