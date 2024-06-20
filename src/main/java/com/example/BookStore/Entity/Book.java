@@ -21,4 +21,10 @@ public class Book {
     private String author;
     @Column(name = "price")
     private double price;
+
+    public Book(String name, String author, double price) {
+        this.name = name;
+        this.author = author;
+        this.price = price;
+    }
 }
